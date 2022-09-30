@@ -9,6 +9,29 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate x:Key="EmployeeInMainPageTemplate">
+                <Grid 
+                    Padding="10"
+                    ColumnDefinitions="Auto, Auto">
+                    <!--<Label 
+                        Grid.Column="0"
+                        Text="{Binding PhotoURL}"
+                           />-->
+                    <Image
+                        Grid.Column="0"
+                        Source="{Binding PhotoUrl}"
+                        Aspect="AspectFill"
+                        HeightRequest="60"
+                        WidthRequest="60"
+                        />
+                    <Label 
+                        Grid.Column="1"
+                        Style="{StaticResource EmployeeListLabel}"
+                        Text="{Binding FullName}"
+                           />
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

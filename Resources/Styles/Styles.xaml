@@ -381,4 +381,12 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <!-- Custom Styles -->
+    <Style TargetType="Label" x:Key="EmployeeListLabel">
+        <Setter Property="Margin" Value="10, 0, 0, 0"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
 </ResourceDictionary>

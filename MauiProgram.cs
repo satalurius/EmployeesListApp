@@ -1,4 +1,7 @@
-﻿namespace EmployeesListApp;
+﻿using EmployeesListApp.Services;
+using EmployeesListApp.Services.Interfaces;
+
+namespace EmployeesListApp;
 
 public static class MauiProgram
 {
@@ -11,8 +14,16 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+			})
+            .RegisterAppServices();
 
 		return builder.Build();
 	}
+
+    public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
+    {
+        mauiAppBuilder.Services.AddSingleton<INavigationService, MauiNavigationService>();
+
+        return mauiAppBuilder;
+    }
 }

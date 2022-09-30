@@ -4,11 +4,30 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:EmployeesListApp"
+    xmlns:pages="clr-namespace:EmployeesListApp.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
+    <!--<ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    -->
 
+    <ShellContent
+        Title="Список сотрудников"
+        ContentTemplate="{DataTemplate pages:EmployeesPage}"
+        Route="employees_page"
+        />
+
+    <ShellContent
+        Title="Описание сотрудника"
+        ContentTemplate="{DataTemplate}"
+        Route="employee"
+        />
+
+    <ShellContent
+        Title="DefaultPage"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="default_page"
+        />
 </Shell>
