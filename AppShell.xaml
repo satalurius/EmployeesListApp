@@ -13,21 +13,31 @@
         Route="MainPage" />
     -->
 
-    <ShellContent
-        Title="Список сотрудников"
-        ContentTemplate="{DataTemplate pages:EmployeesPage}"
-        Route="employees_page"
-        />
+    <!--<FlyoutItem FlyoutDisplayOptions="AsSingleItem" Route="employees_page">
+        <Tab Title="Test">
+        <ShellContent
+            Title="Главная"
+            Icon="dotnet_bot.svg"
+            ContentTemplate="{DataTemplate pages:EmployeesPage}"
+            Route="employees_page"
+            />
+        </Tab>
 
-    <ShellContent
-        Title="Описание сотрудника"
-        ContentTemplate="{DataTemplate}"
-        Route="employee"
-        />
+    </FlyoutItem>-->
 
-    <ShellContent
-        Title="DefaultPage"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="default_page"
-        />
+    <TabBar>
+            <ShellContent
+                Title="Главная"
+                Icon="dotnet_bot.svg"
+                ContentTemplate="{DataTemplate pages:EmployeesPage}"
+                Route="employees_page"
+            />
+            <ShellContent
+                Title="О проекте"
+                Icon="dotnet_bot.svg"
+                ContentTemplate="{DataTemplate pages:EmployeesPage}"
+                Route="."
+            />
+    </TabBar>
+
 </Shell>

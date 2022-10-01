@@ -15,7 +15,7 @@ using ReactiveUI;
 
 namespace EmployeesListApp.ViewModels
 {
-    internal class EmployeesPageViewModel : INotifyPropertyChanged
+    public class EmployeesPageViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigationService;
 
@@ -48,18 +48,18 @@ namespace EmployeesListApp.ViewModels
         {
             _navigationService = navigationService;
             Employees = new ObservableCollectionExtended<Employee>(Data.Employees);
-
+            
             GoToInformationPageCommand = new Command(GoToInformationPage);
         }
 
-        private void GoToInformationPage()
+        private async void GoToInformationPage()
         {
             var navigationParameters = new Dictionary<string, object>
             {
                 { "Employee", SelectedEmployee }
             };
 
-            _navigationService.NavigateToAsync("/employee", navigationParameters);
+            await _navigationService.NavigateToAsync("/employee", navigationParameters);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

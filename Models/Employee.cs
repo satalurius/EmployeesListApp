@@ -8,10 +8,5 @@
         public string FullName { get; init; }
         public string PhotoUrl { get; init; }
         public string Description { get; set; }
-
-        public Employee()
-        {
-            //FullName = $"{Surname} {Name} {Patronymic}";
-        }
     }
 }

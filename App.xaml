@@ -14,10 +14,6 @@
                 <Grid 
                     Padding="10"
                     ColumnDefinitions="Auto, Auto">
-                    <!--<Label 
-                        Grid.Column="0"
-                        Text="{Binding PhotoURL}"
-                           />-->
                     <Image
                         Grid.Column="0"
                         Source="{Binding PhotoUrl}"

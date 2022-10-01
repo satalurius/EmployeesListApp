@@ -26,13 +26,8 @@ public partial class AppShell : Shell
 
     static void RegisterRoutes()
     {
-        /*Routes.Add("employees_page", typeof(EmployeesPage));
-        Routes.Add("default_page", typeof(MainPage));*/
-
         Routing.RegisterRoute("employees_page", typeof(EmployeesPage));
-        Routing.RegisterRoute("default_page", typeof(MainPage));
-/*
-        foreach (var route in Routes)
-            Routing.RegisterRoute(route.Key, route.Value);*/
+        Routing.RegisterRoute("employee", typeof(EmployeePage));
+        Routing.RegisterRoute("employee/edit_employee", typeof(EditEmployeePage));
     }
 }

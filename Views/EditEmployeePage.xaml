@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EmployeesListApp.Views.EditEmployeePage"
+             Title="EditEmployeePage">
+    <Grid ColumnDefinitions="Auto, *">
+        <VerticalStackLayout
+            BindingContext="{Binding Employee}"
+            >
+            <Entry
+                BindingContext="{Binding Name}"
+                Placeholder="Имя"
+                HeightRequest="100" />
+
+            <Entry
+                BindingContext="{Binding Surname}"
+                Placeholder="Имя"
+                HeightRequest="100" />
+
+            <Entry
+                BindingContext="{Binding Patronymic}"
+                Placeholder="Имя"
+                HeightRequest="100" />
+            
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

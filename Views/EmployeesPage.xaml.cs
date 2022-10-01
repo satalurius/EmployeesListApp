@@ -5,13 +5,11 @@ namespace EmployeesListApp.Views;
 
 public partial class EmployeesPage : ContentPage
 {
-    private readonly INavigationService _navigationService;
-	public EmployeesPage(INavigationService navigationService)
+	public EmployeesPage(EmployeesPageViewModel viewModel)
     {
-        _navigationService = navigationService;
 
+        BindingContext = viewModel;
 		InitializeComponent();
-        BindingContext = new EmployeesPageViewModel(_navigationService);
     }
    
 }
