@@ -65,7 +65,7 @@
 	  <MauiXaml Update="Views\EditEmployeePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\EmployeePage.xaml">
+	  <MauiXaml Update="Views\EmployeeDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\EmployeesPage.xaml">
@@ -75,6 +75,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Controls\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\EmployeeDetailPage.xaml.cs">
+	    <DependentUpon>EmployeeDetailPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

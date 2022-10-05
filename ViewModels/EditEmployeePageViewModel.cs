@@ -7,11 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EmployeesListApp.Models;
+using EmployeesListApp.Services.Interfaces;
+using EmployeesListApp.Views;
 
 namespace EmployeesListApp.ViewModels
 {
-    public class EditEmployeePageViewModel : IQueryAttributable, INotifyPropertyChanged
+    [QueryProperty("Employee", "Employee")]
+    public class EditEmployeePageViewModel : INotifyPropertyChanged
     {
+        private readonly INavigationService _navigationService;
+
         private Employee _employee;
 
         public Employee Employee
@@ -25,21 +30,32 @@ namespace EmployeesListApp.ViewModels
         }
 
         public ICommand SaveEmployeeCommand { get; set; }
+        public ICommand GoBackCommand { get; set; }
 
-        public EditEmployeePageViewModel()
+        public EditEmployeePageViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
+
             SaveEmployeeCommand = new Command(SaveEmployee);
+            GoBackCommand = new Command(GoBack);
         }
 
         private async void SaveEmployee()
         {
+            // TODO: Загружать в БД.
 
+            await _navigationService.NavigateToAsync($"//{nameof(EmployeesPage)}");
         }
 
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        private async void GoBack()
         {
-            throw new NotImplementedException();
+            var routeParameters = new Dictionary<string, object>()
+            {
+                { nameof(Employee), Employee }
+            };
+            await _navigationService.NavigateToAsync(nameof(EmployeeDetailPage), routeParameters);
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

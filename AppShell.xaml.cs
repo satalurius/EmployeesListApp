@@ -26,8 +26,11 @@ public partial class AppShell : Shell
 
     static void RegisterRoutes()
     {
-        Routing.RegisterRoute("employees_page", typeof(EmployeesPage));
-        Routing.RegisterRoute("employee", typeof(EmployeePage));
-        Routing.RegisterRoute("employee/edit_employee", typeof(EditEmployeePage));
+        Routing.RegisterRoute(nameof(EmployeesPage), typeof(EmployeesPage));
+       /* Routing.RegisterRoute($"{nameof(EmployeesPage)}/{nameof(EmployeeDetailPage)}", typeof(EmployeeDetailPage));
+        Routing.RegisterRoute($"{nameof(EmployeeDetailPage)}/{nameof(EditEmployeePage)}", typeof(EditEmployeePage));*/
+
+        Routing.RegisterRoute(nameof(EmployeeDetailPage), typeof(EmployeeDetailPage));
+        Routing.RegisterRoute(nameof(EditEmployeePage), typeof(EditEmployeePage));
     }
 }

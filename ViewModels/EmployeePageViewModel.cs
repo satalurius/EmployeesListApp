@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EmployeesListApp.Models;
 using EmployeesListApp.Services.Interfaces;
+using EmployeesListApp.Views;
 
 namespace EmployeesListApp.ViewModels
 {
-    public class EmployeePageViewModel : IQueryAttributable, INotifyPropertyChanged
+    [QueryProperty("Employee", "Employee")]
+    public class EmployeePageViewModel : INotifyPropertyChanged
     {
         private readonly INavigationService _navigationService;
 
@@ -27,12 +29,14 @@ namespace EmployeesListApp.ViewModels
         }
 
         public ICommand EditEmployeeCommand { get; set; }
+        public ICommand GoBackCommand { get; set; }
 
         public EmployeePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
 
             EditEmployeeCommand = new Command(EditEmployee);
+            GoBackCommand = new Command(GoBack);
         }
 
 
@@ -44,13 +48,12 @@ namespace EmployeesListApp.ViewModels
             };
 
              await _navigationService
-                .NavigateToAsync("employee/edit_employee", navigationParameters);
+                .NavigateToAsync(nameof(EditEmployeePage), navigationParameters);
         }
 
-        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        private async void GoBack()
         {
-            Employee = query[nameof(Employee)] as Employee;
-            OnPropertyChanged(nameof(Employee));
+            await _navigationService.NavigateToAsync($"//{nameof(EmployeesPage)}");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

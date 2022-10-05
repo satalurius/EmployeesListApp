@@ -8,8 +8,8 @@ public partial class EmployeesPage : ContentPage
 	public EmployeesPage(EmployeesPageViewModel viewModel)
     {
 
-        BindingContext = viewModel;
 		InitializeComponent();
+        BindingContext = viewModel;
     }
    
 }

@@ -2,9 +2,9 @@ using EmployeesListApp.ViewModels;
 
 namespace EmployeesListApp.Views;
 
-public partial class EditEmployeePage : ContentPage
+public partial class EmployeeDetailPage : ContentPage
 {
-	public EditEmployeePage(EditEmployeePageViewModel viewModel)
+	public EmployeeDetailPage(EmployeePageViewModel viewModel)
     {
 		InitializeComponent();
         BindingContext = viewModel;

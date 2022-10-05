@@ -7,30 +7,12 @@
     xmlns:pages="clr-namespace:EmployeesListApp.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <!--<ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-    -->
-
-    <!--<FlyoutItem FlyoutDisplayOptions="AsSingleItem" Route="employees_page">
-        <Tab Title="Test">
-        <ShellContent
-            Title="Главная"
-            Icon="dotnet_bot.svg"
-            ContentTemplate="{DataTemplate pages:EmployeesPage}"
-            Route="employees_page"
-            />
-        </Tab>
-
-    </FlyoutItem>-->
-
     <TabBar>
             <ShellContent
                 Title="Главная"
                 Icon="dotnet_bot.svg"
                 ContentTemplate="{DataTemplate pages:EmployeesPage}"
-                Route="employees_page"
+                Route="EmployeesPage"
             />
             <ShellContent
                 Title="О проекте"

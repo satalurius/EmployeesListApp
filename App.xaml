@@ -10,6 +10,11 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Color x:Key="LightBackground">#FAF9F8</Color>
+
+            <Color x:Key="CardBackground">White</Color>
+            <Color x:Key="CardBackgroundDark">#1C1C1E</Color>
+
             <DataTemplate x:Key="EmployeeInMainPageTemplate">
                 <Grid 
                     Padding="10"
@@ -28,6 +33,30 @@
                            />
                 </Grid>
             </DataTemplate>
+
+            <Style x:Key="CardView" TargetType="Frame">
+                <Setter Property="BorderColor" Value="#DDDDDD"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Background" Value="{StaticResource CardBackground}"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+            </Style>
+
+            <Style x:Key="ButtonOutline" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource LightBackground}"/>
+                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BorderColor" Value="{StaticResource Primary}"/>
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="HeightRequest" Value="40"/>
+                <Setter Property="CornerRadius" Value="20"/>
+            </Style>
+
+            <Style x:Key="EditOutlineButton" TargetType="Button" BasedOn="{StaticResource ButtonOutline}">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="WidthRequest" Value="200"/>
+            </Style>
+         
         </ResourceDictionary>
     </Application.Resources>
 </Application>

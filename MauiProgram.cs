@@ -33,17 +33,17 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddSingleton<EmployeesPageViewModel>();
+        mauiAppBuilder.Services.AddTransient<EmployeesPageViewModel>();
         mauiAppBuilder.Services.AddSingleton<EmployeePageViewModel>();
-        mauiAppBuilder.Services.AddSingleton<EditEmployeePageViewModel>();
+        mauiAppBuilder.Services.AddTransient<EditEmployeePageViewModel>();
 
         return mauiAppBuilder;
     }
 
     public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddTransient<EmployeesPage>();
-        mauiAppBuilder.Services.AddTransient<EmployeePage>();
+        mauiAppBuilder.Services.AddSingleton<EmployeesPage>();
+        mauiAppBuilder.Services.AddSingleton<EmployeeDetailPage>();
         mauiAppBuilder.Services.AddTransient<EditEmployeePage>();
 
         return mauiAppBuilder;

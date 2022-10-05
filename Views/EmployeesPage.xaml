@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:EmployeesListApp.Models"
+             xmlns:viewModels="clr-namespace:EmployeesListApp.ViewModels"
              x:Class="EmployeesListApp.Views.EmployeesPage"
-             Title="EmployeesPage">
+             Title="Сотрудники">
 
-    <VerticalStackLayout>
+    <Grid
+        ColumnDefinitions="*, *"
+        ColumnSpacing="5"
+        RowDefinitions="*, Auto"
+        RowSpacing="0"
+        BackgroundColor="{StaticResource LightBackground}"
+        >
         <CollectionView
-            ItemTemplate="{StaticResource EmployeeInMainPageTemplate}"
             ItemsSource="{Binding Employees}"
             SelectedItem="{Binding SelectedEmployee}"
-            SelectionMode="Single"
-            SelectionChangedCommand="{Binding GoToInformationPageCommand }"
-            />
-    </VerticalStackLayout>
+            BackgroundColor="Transparent"
+            SelectionMode="None"
+            Grid.ColumnSpan="2"
+            >
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Employee">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:EmployeesPageViewModel}}, 
+                                        Path=GoToInformationPageCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" ColumnDefinitions="125, *">
+                                <Image
+                                    Grid.Column="0"
+                                    Aspect="AspectFill"
+                                    HeightRequest="125"
+                                    WidthRequest="125"
+                                    Source="{Binding PhotoUrl}"
+                                    />
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Padding="10">
+                                    <Label FontSize="20" Text="{Binding FullName}"/>
+                                    <Label FontSize="14" Text="{Binding Description}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
 </ContentPage>

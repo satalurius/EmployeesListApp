@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EmployeesListApp.Services.Interfaces;
+using EmployeesListApp.Views;
 
 namespace EmployeesListApp.Services
 {
     internal class MauiNavigationService : INavigationService
     {
         public Task InitializeAsync()
-            => NavigateToAsync("//employees_page");
+            => NavigateToAsync($"//{nameof(EmployeesPage)}");
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
         {
@@ -25,8 +26,6 @@ namespace EmployeesListApp.Services
             => Shell.Current.GoToAsync("..");
 
         public Task GoBackAsync()
-        {
-            throw new NotImplementedException();
-        }
+            => Shell.Current.GoToAsync(nameof(EmployeesPage));
     }
 }

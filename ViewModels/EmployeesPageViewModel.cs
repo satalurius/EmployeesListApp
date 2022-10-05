@@ -11,6 +11,7 @@ using System.Windows.Input;
 using DynamicData.Binding;
 using EmployeesListApp.Models;
 using EmployeesListApp.Services.Interfaces;
+using EmployeesListApp.Views;
 using ReactiveUI;
 
 namespace EmployeesListApp.ViewModels
@@ -49,17 +50,18 @@ namespace EmployeesListApp.ViewModels
             _navigationService = navigationService;
             Employees = new ObservableCollectionExtended<Employee>(Data.Employees);
             
-            GoToInformationPageCommand = new Command(GoToInformationPage);
+            GoToInformationPageCommand = new Command<Employee>(GoToInformationPage);
         }
 
-        private async void GoToInformationPage()
+        private async void GoToInformationPage(Employee employee)
+
         {
             var navigationParameters = new Dictionary<string, object>
             {
-                { "Employee", SelectedEmployee }
+                { "Employee", employee }
             };
 
-            await _navigationService.NavigateToAsync("/employee", navigationParameters);
+            await _navigationService.NavigateToAsync(nameof(EmployeeDetailPage), navigationParameters);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -69,12 +71,5 @@ namespace EmployeesListApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(field, value)) return false;
-            field = value;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
     }
 }
