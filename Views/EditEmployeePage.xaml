@@ -62,7 +62,7 @@
                 <VerticalStackLayout  Spacing="10">
                     <Label FontAttributes="Bold" Text="Имя"/>
                     <Frame HeightRequest="40" BackgroundColor="{StaticResource LightBackground}">
-                        <Entry HeightRequest="40" Placeholder="Введите имя" Text="{Binding Employee.Name}"/>
+                        <Entry HeightRequest="40" Placeholder="Введите имя" Text="{Binding Employee.Name, Mode=TwoWay}"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -70,7 +70,7 @@
                 <VerticalStackLayout  Spacing="10">
                     <Label FontAttributes="Bold" Text="Фамилия"/>
                     <Frame HeightRequest="40" BackgroundColor="{StaticResource LightBackground}">
-                        <Entry  Placeholder="Введите фамилия" HeightRequest="40"  Text="{Binding Employee.Surname}"/>
+                        <Entry  Placeholder="Введите фамилия" HeightRequest="40"  Text="{Binding Employee.Surname, Mode=TwoWay}"/>
                     </Frame>
                 </VerticalStackLayout>
 
@@ -78,14 +78,14 @@
                 <VerticalStackLayout Spacing="10">
                     <Label FontAttributes="Bold" Text="Отчество"/>
                     <Frame HeightRequest="40" BackgroundColor="{StaticResource LightBackground}">
-                        <Entry HeightRequest="40" Placeholder="Введите отчество" Text="{Binding Employee.Patronymic}"/>
+                        <Entry HeightRequest="40" Placeholder="Введите отчество" Text="{Binding Employee.Patronymic, Mode=TwoWay}"/>
                     </Frame>
                 </VerticalStackLayout>
 
                 <VerticalStackLayout  Spacing="10">
                     <Label FontAttributes="Bold" Text="Описание"/>
                     <Frame HeightRequest="250" BackgroundColor="{StaticResource LightBackground}">
-                        <Editor Placeholder="Введите описание" HeightRequest="250" Text="{Binding Employee.Description}"/>
+                        <Editor Placeholder="Введите описание" HeightRequest="250" Text="{Binding Employee.Description, Mode=TwoWay}"/>
                     </Frame>
                 </VerticalStackLayout>
             </VerticalStackLayout>

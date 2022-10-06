@@ -6,6 +6,11 @@
              x:Class="EmployeesListApp.Views.EmployeesPage"
              Title="Сотрудники">
 
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+"  Command="{Binding GoToCreateEmployeePageCommand}"/>
+    </ContentPage.ToolbarItems>
+    
     <Grid
         ColumnDefinitions="*, *"
         ColumnSpacing="5"

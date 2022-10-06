@@ -48,35 +48,25 @@ namespace EmployeesListApp.ViewModels
         }
 
         public ICommand GoToInformationPageCommand { get; set; }
+        public ICommand GoToCreateEmployeePageCommand { get; set; }
 
         public EmployeesPageViewModel(INavigationService navigationService, IDatabaseRepository<EmployeeInfrastructure> databaseRepository)
         {
             _databaseRepository = databaseRepository;
             _navigationService = navigationService;
 
-            /*Employees = new ObservableCollectionExtended<Employee>(Data.Employees);*/
-
 
             Task.Run(InitView);
             
             GoToInformationPageCommand = new Command<Employee>(GoToInformationPage);
+            GoToCreateEmployeePageCommand = new Command(GoToCreateEmployeePage);
 
             EventObserver.employeesViewModelNeedChangeEvent += InitEmployeesAsync;
         }
 
         private async Task InitView()
         {
-            await _databaseRepository.CreateEntityAsync(new EmployeeInfrastructure()
-            {
-                Surname = "Черенков",
-                Name = "Максим",
-                Patronymic = "Алексеевич",
-                Description =
-                    "Хороший пацан. Суетолог, мастер своего дела.",
-                PhotoUrl =
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Tonkin_snub-nosed_monkeys_%28Rhinopithecus_avunculus%29.jpg/320px-Tonkin_snub-nosed_monkeys_%28Rhinopithecus_avunculus%29.jpg"
-            });
-
+            await Data.SeedDatabaseIfEmpty();
             await InitEmployeesAsync();
         }
 
@@ -97,6 +87,9 @@ namespace EmployeesListApp.ViewModels
 
             await _navigationService.NavigateToAsync(nameof(EmployeeDetailPage), navigationParameters);
         }
+
+        private async void GoToCreateEmployeePage()
+            => await _navigationService.NavigateToAsync(nameof(EditEmployeePage), new Dictionary<string, object> { { "Employee", null } });
 
         public event PropertyChangedEventHandler PropertyChanged;
 

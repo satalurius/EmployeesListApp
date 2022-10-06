@@ -19,11 +19,6 @@ namespace EmployeesListApp.Infrastructure
                 return;
 
             _database = new SQLiteAsyncConnection(InfrastructureConstants.DatabasePath);
-            /*if (!Directory.Exists(InfrastructureConstants.DirectoryPath))
-                Directory.CreateDirectory(InfrastructureConstants.DirectoryPath);
-
-            if (!File.Exists(InfrastructureConstants.DatabasePath))
-                File.Create(InfrastructureConstants.DatabasePath);*/
 
             await _database.CreateTableAsync<EmployeeInfrastructure>();
 

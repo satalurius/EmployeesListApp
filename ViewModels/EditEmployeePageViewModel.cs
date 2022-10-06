@@ -16,6 +16,7 @@ namespace EmployeesListApp.ViewModels
         private readonly IDatabaseRepository<EmployeeInfrastructure> _databaseRepository;
 
         private Employee _oldEmployee;
+        private bool isNewUser = false;
 
         private Employee _employee;
         public Employee Employee
@@ -43,7 +44,10 @@ namespace EmployeesListApp.ViewModels
 
         private async void SaveEmployee()
         {
-            await _databaseRepository.UpdateEntityAsync(EmployeeInfrastructure.ConvertInterfaceModelToInfrastructureModel(Employee));
+            if (isNewUser)
+                await _databaseRepository.CreateEntityAsync(EmployeeInfrastructure.ConvertInterfaceModelToInfrastructureModel(Employee));
+            else 
+                await _databaseRepository.UpdateEntityAsync(EmployeeInfrastructure.ConvertInterfaceModelToInfrastructureModel(Employee));
 
             EventObserver.OnEmployeesViewModelNeedChangeEvent();
 
@@ -72,9 +76,20 @@ namespace EmployeesListApp.ViewModels
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            Employee = query["Employee"] as Employee;
+            var queryEmployee = query["Employee"] as Employee;
+            if (queryEmployee is null)
+            {
+                isNewUser = true;
+                Employee = new Employee();
+            }
+            else
+            {
+                Employee = queryEmployee;
+            }
+
             OnPropertyChanged("Employee");
             _oldEmployee = Employee.Clone() as Employee;
+
         }
     }
 }
