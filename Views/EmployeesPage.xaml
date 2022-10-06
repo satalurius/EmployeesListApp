@@ -42,7 +42,15 @@
                                 <VerticalStackLayout
                                     Grid.Column="1"
                                     Padding="10">
-                                    <Label FontSize="20" Text="{Binding FullName}"/>
+                                    <Label FontSize="20">
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                                <Binding Path="Surname"/>
+                                                <Binding Path="Name"/>
+                                                <Binding Path="Patronymic"/>
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
                                     <Label FontSize="14" Text="{Binding Description}"/>
                                 </VerticalStackLayout>
                             </Grid>

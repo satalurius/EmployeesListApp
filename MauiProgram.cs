@@ -1,4 +1,6 @@
-﻿using EmployeesListApp.Services;
+﻿using EmployeesListApp.Infrastructure;
+using EmployeesListApp.Infrastructure.Models;
+using EmployeesListApp.Services;
 using EmployeesListApp.Services.Interfaces;
 using EmployeesListApp.ViewModels;
 using EmployeesListApp.Views;
@@ -27,6 +29,8 @@ public static class MauiProgram
     public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
     {
         mauiAppBuilder.Services.AddSingleton<INavigationService, MauiNavigationService>();
+        mauiAppBuilder.Services
+            .AddSingleton<IDatabaseRepository<EmployeeInfrastructure>, EmployeeAppDatabaseRepository>();
 
         return mauiAppBuilder;
     }

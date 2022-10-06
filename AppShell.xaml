@@ -7,19 +7,10 @@
     xmlns:pages="clr-namespace:EmployeesListApp.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
-            <ShellContent
-                Title="Главная"
-                Icon="dotnet_bot.svg"
-                ContentTemplate="{DataTemplate pages:EmployeesPage}"
-                Route="EmployeesPage"
-            />
-            <ShellContent
-                Title="О проекте"
-                Icon="dotnet_bot.svg"
-                ContentTemplate="{DataTemplate pages:EmployeesPage}"
-                Route="."
-            />
-    </TabBar>
-
+    <ShellContent
+        Title="Главная"
+        Icon="dotnet_bot.svg"
+        ContentTemplate="{DataTemplate pages:EmployeesPage}"
+        Route="EmployeesPage"
+    />
 </Shell>

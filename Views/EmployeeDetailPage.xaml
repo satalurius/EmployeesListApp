@@ -44,10 +44,22 @@
 
             </Grid>
             <VerticalStackLayout Padding="10" Spacing="10">
-                <Label FontSize="16"
+                <!--<Label FontSize="16"
                        TextColor="#1F1F1F" 
                        FontFamily="OpenSansRegular" 
-                       HorizontalTextAlignment="Center" Text="{Binding Employee.FullName}"/>
+                       HorizontalTextAlignment="Center" Text="{Binding Employee.FullName}"/>-->
+                <Label FontSize="16"
+                       TextColor="#1F1F1F"
+                       FontFamily="OpenSansRegular"
+                       HorizontalTextAlignment="Center">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                            <Binding Path="Employee.Surname"/>
+                            <Binding Path="Employee.Name"/>
+                            <Binding Path="Employee.Patronymic"/>
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
                 <Button Text="Редактировать"
                         Style="{StaticResource EditOutlineButton}"
                         Command="{Binding EditEmployeeCommand}">

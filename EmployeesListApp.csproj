@@ -59,6 +59,8 @@
 
 	<ItemGroup>
 	  <PackageReference Include="ReactiveUI.Maui" Version="18.3.1" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -81,6 +83,12 @@
 	  <Compile Update="Views\EmployeeDetailPage.xaml.cs">
 	    <DependentUpon>EmployeeDetailPage.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="EmployeesApp.db3">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>
